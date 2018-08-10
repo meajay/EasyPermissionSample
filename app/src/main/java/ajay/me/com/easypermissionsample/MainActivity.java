@@ -56,10 +56,14 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     @AfterPermissionGranted(CAMERA_RESULT_CODE)
     public void processCameraPermission(View view) {
+        //check for camera permission is granted or not
         if (hasCameraPermission()) {
+            //do your camera work like clicking pictures
             Toast.makeText(this, getString(R.string.camera_permission_enabled),
                     Toast.LENGTH_LONG).show();
-        } else {
+        }
+        //otherwise request camera permissions
+        else {
             EasyPermissions.requestPermissions(this, getString(R.string.camera_rationale),
                     CAMERA_RESULT_CODE, Manifest.permission.CAMERA);
         }
@@ -68,9 +72,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @AfterPermissionGranted(SMS_RESULT_CODE)
     public void processSmsPermission(View view) {
         if (hasSmsPermission()) {
+            //do your sms work if sma permission is enabled
             Toast.makeText(this, getString(R.string.sms_permission_enabled),
                     Toast.LENGTH_LONG).show();
         } else {
+            //ask for read sms permission
             EasyPermissions.requestPermissions(this, getString(R.string.sms_rationale),
                     SMS_RESULT_CODE, Manifest.permission.READ_SMS);
         }
@@ -79,9 +85,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @AfterPermissionGranted(STORAGE_RESULT_CODE)
     public void processStoragePermission(View view) {
         if (hasStoragePermission()) {
+            //do your storage work
             Toast.makeText(this, getString(R.string.storage_permission_enabled),
                     Toast.LENGTH_LONG).show();
         } else {
+            //ask for storage permission
             EasyPermissions.requestPermissions(this, getString(R.string.storage_rationable),
                     STORAGE_RESULT_CODE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
@@ -90,9 +98,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @AfterPermissionGranted(LOCATION_RESULT_CODE)
     public void processLocationPermission(View view) {
         if (hasLocationPermission()) {
+            //do your location work
             Toast.makeText(this, getString(R.string.location_permission_enabled),
                     Toast.LENGTH_LONG).show();
         } else {
+            //ask for location permissions
             EasyPermissions.requestPermissions(this, getString(R.string.location_rationale),
                     LOCATION_RESULT_CODE, Manifest.permission.ACCESS_FINE_LOCATION);
         }
@@ -100,14 +110,17 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        //if anyone permissions granted
         Toast.makeText(this, "Permission granted : " + String.valueOf(requestCode),
                 Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        //if any one of the permission is denied
         Toast.makeText(this, "Permissions denied " + String.valueOf(requestCode),
                 Toast.LENGTH_LONG).show();
+        //check if denied permission is permanently disabled or not
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             new AppSettingsDialog.Builder(this).build().show();
         }
