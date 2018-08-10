@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EasyPermissionSample</string>
+    <string name="camera_permission_enabled">Camera Permission Enabled</string>
+    <string name="sms_permission_enabled">Sms permission already enabled</string>
+    <string name="storage_permission_enabled">Storage permission already enabled</string>
+    <string name="location_permission_enabled">Location permission already enabled</string>
+    <string name="camera_rationale">Camera permissions are mandatory to click pictures</string>
+    <string name="sms_rationale">Sms permissions are mandatory to read incoming otps.</string>
+    <string name="storage_rationable">Storage permissions are mandatory to write documents.</string>
+    <string name="location_rationale">Location permissions are mandatory to access location of user</string>
+</resources>
